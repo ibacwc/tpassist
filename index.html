@@ -7,55 +7,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <script src="main.js"></script>
     <header>
         <img src="chuddie.jpg">
         <h1>Training Progress Assistant</h1>
     </header>
-    <div class="main">
+    <div id="main">
         <div class="exercise-container">
             <p>Select Exercise:</p>
             <select name="exercise" id="exercise-select">
-                <option value="pushups">Push-ups</option>
-                <option value="rows">Bodyweight rows</option>
-                <option value="dips">Dips</option>
-                <option value="pullups">Pull-ups</option>
-                <option value="squats">Bodyweight squats</option>
+                <option value="Push-ups">Push-ups</option>
+                <option value="Rows">Bodyweight rows</option>
+                <option value="Dips">Dips</option>
+                <option value="Pull-ups">Pull-ups</option>
+                <option value="Squats">Bodyweight squats</option>
             </select>
-            <button onclick="add_exercise()">Add exercise</button>
+            <button onclick="add_exercise(document.getElementById('exercise-select').value)">Add exercise</button>
         </div>
-        <div class="exercise" id="pushup">
-            <p>Push-ups</p>
-            <div class="sets-container">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-                <input class="set" type="text">
-
-            </div>
-            <button onclick="add_set()">Add Set</button>
-        </div>
+    </div>
+    <div class="stats">
+        <p>Stats:</p>
+    </div>
+    <div class="center">
+        <button onclick="calc_stats()">Calculate stats</button>
     </div>
 </body>
 </html>
