@@ -12,6 +12,9 @@ function rm_set(div){
 	let sc_len = sets_container.children.length
 	if (sc_len > 1){
 		sets_container.removeChild(sets_container.children[sc_len - 1])
+	}else{
+		existing_exercises.delete(sets_container.parentNode.id);
+		sets_container.parentNode.remove();
 	}
 }
 function calc_stats(){
@@ -32,7 +35,7 @@ function calc_stats(){
 			
 		}
 		let p = document.createElement("p");
-		p.innerHTML = `did ${exc_name} for ${reps_done} reps`;
+		p.innerHTML = `Did ${exc_name} for ${reps_done} reps`;
 		stats_cont.append(p);
 	}
 }
