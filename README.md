@@ -1,6 +1,4 @@
-# tpassist
-
-[TOC]
+# tpassist :tongue:
 
 website to make tracking your workouts easier
 
@@ -14,3 +12,4 @@ lots of stuff
 - [ ] adding weight to calisthenics movements
 - [ ] total weight lifted
 [^1]: not actual accounts, just local storage
+

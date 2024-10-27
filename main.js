@@ -20,7 +20,7 @@ function rm_set(div){
 function calc_stats(){
 	let exercises = document.getElementsByClassName("exercise");
 	let stats_cont = document.getElementById("stats");
-	stats_cont.innerHTML = "";
+	stats_cont.innerHTML = "<p>This workout you've done:<p>";
 	for(let i =0; i<exercises.length; ++i){
 		let exc = exercises[i];
 		let exc_name = exc.id;
@@ -35,8 +35,14 @@ function calc_stats(){
 			
 		}
 		let p = document.createElement("p");
-		p.innerHTML = `Did ${exc_name} for ${reps_done} reps`;
+		p.innerHTML = `${exc_name} for ${reps_done} rep`;
+		if(reps_done != 1){
+			p.innerHTML+='s';
+		}
 		stats_cont.append(p);
+	}
+	if(stats_cont.children.length <= 2){
+		stats_cont.innerHTML += "<p>Nothing!</p>";
 	}
 }
 function add_exercise(exc){
