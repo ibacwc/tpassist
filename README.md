@@ -1,5 +1,15 @@
 # tpassist
-website to make tracking progress in your workouts easier
 
-## what
-you heard me. 
+[TOC]
+
+website to make tracking your workouts easier
+
+## plans
+lots of stuff
+- [] saving progress aka "accounts"*
+- [] exercise categories, like shoulders, chest, etc.
+- [] total rep count
+- [] a LOT of movements
+- [] adding weight to calisthenics movements
+- [] total weight lifted
+\* - not actual accounts, just local storage
