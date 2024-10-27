@@ -66,3 +66,8 @@ function add_exercise(exc){
 	existing_exercises.set(exc, exc_div);
 
 }
+function check_storage(){
+	if(typeof(Storage) == "undefined"){
+		alert("No web storage support!! You can use this site, but you can't save your progress.");
+	}
+}
