@@ -6,29 +6,38 @@
     <title>Training Progress Assistant</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<header>
+    <img src="chuddie.jpg">
+    <h1>Training Progress Assistant</h1>
+    <div class="chronometer">
+        <p id="time-display">00:00:00:00</p>
+        <button onclick="start_stopwatch()" id="timer-button">Start</button>
+    </div>
+</header>
 <body onload="check_storage()">
-    <script src="main.js"></script>
-    <header>
-        <img src="chuddie.jpg">
-        <h1>Training Progress Assistant</h1>
-    </header>
     <div id="main">
-        <div class="exercise-container">
+        <div class="selection-container">
             <p>Select Exercise:</p>
-            <select name="exercise" id="exercise-select">
-                <option value="Push-ups">Push-ups</option>
-                <option value="Rows">Bodyweight rows</option>
-                <option value="Dips">Dips</option>
-                <option value="Pull-ups">Pull-ups</option>
-                <option value="Squats">Bodyweight squats</option>
-            </select>
-            <button onclick="add_exercise(document.getElementById('exercise-select').value)">Add exercise</button>
+            <div class="exercise-container">
+                <input type="text" id="exercise-input" onkeyup="find_exercise()" placeholder="Type desired exercise here">
+                <ul id="exercises">
+                    <li value="Push ups">Push ups</li>
+                    <li value="Rows">Bodyweight rows</li>
+                    <li value="Dips">Dips</li>
+                    <li value="Pull-ups">Pull-ups</li>
+                    <li value="Squats">Bodyweight squats</li>
+                </ul>
+            </div>
+            <button onclick="add_exercise(document.getElementById('exercise-input').value)">Add exercise</button>
         </div>
     </div>
     <div class="center">
         <button id="calc-button" onclick="calc_stats()">Calculate stats</button>
     </div>
     <div id="stats">
+        
     </div>
+    <script src="main.js"></script>
+    <script src="chronometer.js"></script>
 </body>
 </html>

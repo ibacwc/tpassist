@@ -3,6 +3,20 @@ set_input.classList.add("set");
 set_input.setAttribute('type', 'number');
 let existing_exercises = new Map();
 
+const exc_container = document.getElementById('exercise-container');
+const input = document.getElementById("exercise-input");
+const ul = document.getElementById("exercises");
+const li = document.getElementsByTagName('li');
+input.addEventListener('focus', function() {
+	ul.style.display ="block";
+});
+for(let i =0; i< li.length;++i){
+	li[i].addEventListener('click', function (){
+		input.value = li[i].innerHTML;
+		ul.style.display = "none";
+	});
+}
+
 function add_set(div){
 	let sets_container = div.querySelector('.sets-container');
 	sets_container.appendChild(set_input.cloneNode(true));
@@ -46,6 +60,9 @@ function calc_stats(){
 	}
 }
 function add_exercise(exc){
+	if(exc ==""){
+		return;
+	}
 	if (existing_exercises.get(exc)){
 		let tmp = existing_exercises.get(exc);
 		tmp.classList.add("flash");
@@ -76,4 +93,22 @@ function check_storage(){
 	if(typeof(Storage) == "undefined"){
 		alert("No web storage support!! You can use this site, but you can't save your progress.");
 	}
+}
+
+//The thief who has no oppertunity to steal thinks he is an honest man...
+function find_exercise(){
+	let filter = input.value.toUpperCase();
+
+
+	for (let i = 0; i< li.length; ++i){
+		let txt_val = li[i].innerHTML;
+		if(txt_val.toUpperCase().indexOf(filter) > -1){
+			li[i].style.display="";
+		}else{
+			li[i].style.display="none";
+		}
+	}
+}
+function select_exercise(exc){
+	input.value = exc.innerHTML;
 }
