@@ -7,14 +7,29 @@ const exc_container = document.getElementById('exercise-container');
 const input = document.getElementById("exercise-input");
 const ul = document.getElementById("exercises");
 const li = document.getElementsByTagName('li');
-input.addEventListener('focus', function() {
-	ul.style.display ="block";
-});
+ul.style.display = "none";
+
+function activate_input(){
+	if(ul.style.display == "none"){
+		ul.style.display = 'block';
+	}
+}
+function deactivate_input(){
+	if(ul.style.display=="block" && mouse != "li"){
+		ul.style.display='none';
+	}
+}
+
+input.addEventListener('focusin', activate_input);
+input.addEventListener('focusout', deactivate_input);
+input.addEventListener('click', activate_input);
 for(let i =0; i< li.length;++i){
 	li[i].addEventListener('click', function (){
 		input.value = li[i].innerHTML;
 		ul.style.display = "none";
 	});
+	li[i].addEventListener('mouseover', function(){mouse="li"});
+	li[i].addEventListener('mouseout', function(){mouse=""});
 }
 
 function add_set(div){
@@ -27,8 +42,8 @@ function rm_set(div){
 	if (sc_len > 1){
 		sets_container.removeChild(sets_container.children[sc_len - 1])
 	}else{
-		existing_exercises.delete(sets_container.parentNode.id);
-		sets_container.parentNode.remove();
+		existing_exercises.delete(sets_container.parentNode.parentNode.id);
+		sets_container.parentNode.parentNode.remove();
 	}
 }
 function calc_stats(){
@@ -58,6 +73,7 @@ function calc_stats(){
 	if(stats_cont.children.length <= 2){
 		stats_cont.innerHTML += "<p>Nothing!</p>";
 	}
+	window.location.href='#stats';
 }
 function add_exercise(exc){
 	if(exc ==""){
@@ -73,17 +89,22 @@ function add_exercise(exc){
 	}
 	let exc_div = document.createElement('div');
 	exc_div.classList.add('exercise');
-	exc_div.innerHTML = '<div class="sets-container">\
-                <input class="set" type="number">\
-            </div>\
-            <div class="column">\
-                <button onclick="add_set(this.parentNode.parentNode)">Add Set</button>\
-                <button onclick="rm_set(this.parentNode.parentNode)">Delete Set</button>\
-            </div>';
+	exc_div.innerHTML = 
+	
+	'<div class="info">\
+		<div class="sets-container">\
+		<input class="set" type="number">\
+	</div>\
+	</div>\
+		<div class="column">\
+			<button onclick="add_set(this.parentNode.parentNode)">Add Set</button>\
+			<button onclick="rm_set(this.parentNode.parentNode)">Delete Set</button>\
+		</div>\
+	</div>';
 	exc_div.setAttribute("id", exc)
 	let paragraph = document.createElement('p');
 	paragraph.textContent= exc;
-	exc_div.insertBefore(paragraph, exc_div.firstChild);
+	exc_div.firstChild.prepend(paragraph);
 	const main = document.getElementById('main');
 	main.appendChild(exc_div);
 	existing_exercises.set(exc, exc_div);
