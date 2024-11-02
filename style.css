@@ -176,6 +176,7 @@ button:active{
 	padding: 5px;
 	align-items: center;
 	gap: 5px;
+	border-radius: 5px;
 }
 .chronometer p{
 	padding: 0px 2px;

@@ -14,18 +14,13 @@
         <button onclick="start_stopwatch()" id="timer-button">Start</button>
     </div>
 </header>
-<body onload="check_storage()">
+<body onload="start()">
     <div id="main">
         <div class="selection-container">
             <p>Select Exercise:</p>
             <div class="exercise-container">
                 <input type="text" id="exercise-input" onkeyup="find_exercise()" placeholder="Type desired exercise here">
                 <ul id="exercises">
-                    <li value="Push ups">Push ups</li>
-                    <li value="Rows">Bodyweight rows</li>
-                    <li value="Dips">Dips</li>
-                    <li value="Pull-ups">Pull-ups</li>
-                    <li value="Squats">Bodyweight squats</li>
                 </ul>
             </div>
             <button onclick="add_exercise(document.getElementById('exercise-input').value)">Add exercise</button>
@@ -37,7 +32,7 @@
     <div id="stats">
         
     </div>
-    <script src="main.js"></script>
     <script src="chronometer.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
