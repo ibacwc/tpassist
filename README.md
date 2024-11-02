@@ -1,4 +1,4 @@
-# tpassist :tongue:
+# tpassist 💪
 
 website to make tracking your workouts easier
 
